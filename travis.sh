@@ -29,9 +29,11 @@ if [[ "$TASK" == "clang" ]]; then
 	mkdir release && cd release && cmake -G Ninja .. -DCMAKE_BUILD_TYPE=Release && time ninja crossuo_unity -j8
 	file ./src/crossuo
 	file ./src/crossuo.so
-	cd ..
 	echo Zip File
-	zip  CrossUO-clang-night.zip ./release/src/crossuo.so ./release/src/crossuo
+	cd src
+	zip CrossUO-Unbuntu-nightly.zip crossuo.so crossuo
+	mv CrossUO-Unbuntu-nightly.zip ../../
+	cd ../../
 	echo Where is my zip...
 	ls
 	##./src/crossuo --headless
