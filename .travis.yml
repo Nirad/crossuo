@@ -23,9 +23,13 @@ matrix:
             - libsndio-dev
             - libxkbcommon-dev
       script: ./travis.sh
+      before_deploy:
+      # Set up git user name and tag this commit
+      - git tag Lastest
       deploy:
         provider: releases
         api_key: "$GH_TOKEN"
+        overwrite: true
         file: "CrossUO-clang-night.zip"
         skip_cleanup: true
         on:
