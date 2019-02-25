@@ -62,3 +62,13 @@ matrix:
       cache: ccache
       script:
         - ./travis.sh
+deploy:
+        provider: releases
+        api_key: "$GH_TOKEN"
+        file: "release/src/crossuo.so"
+        skip_cleanup: true
+        on:
+          tags: false
+          all_branches: true
+          repo: Nirad/crossuo
+          
