@@ -29,7 +29,7 @@ if [[ "$TASK" == "clang" ]]; then
 	mkdir release && cd release && cmake -G Ninja .. -DCMAKE_BUILD_TYPE=Release && time ninja crossuo_unity -j8
 	file ./src/crossuo
 	file ./src/crossuo.so
-	echo Zip File
+	echo Make the zip file
 	cd src
 	zip CrossUO-Unbuntu-nightly.zip crossuo.so crossuo
 	mv CrossUO-Unbuntu-nightly.zip ../../
@@ -64,7 +64,7 @@ if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
 	
 	echo Building Release
 	mkdir release && cd release && cmake -G Ninja .. -DCMAKE_BUILD_TYPE=Release && ninja crossuo_unity -j8
-	echo Zip File
+	echo Make the zip file
 	cd src
 	zip CrossUO-OSX-nightly.zip crossuo.so crossuo
 	mv CrossUO-OSX-nightly.zip ../../
