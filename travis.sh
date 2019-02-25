@@ -32,11 +32,9 @@ if [[ "$TASK" == "clang" ]]; then
 	echo Zip File
 	zip  CrossUO-clang-night.zip ./src/crossuo.so ./src/crossuo
 	echo Test LS
-	cd src
+	cd ..
 	ls
-	cd ..
 	##./src/crossuo --headless
-	cd ..
 fi
 
 if [[ "$TASK" == "gcc" ]]; then
