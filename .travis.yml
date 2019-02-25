@@ -25,7 +25,7 @@ matrix:
       script: ./travis.sh
       before_deploy:
       # Set up git user name and tag this commit
-      - git tag "Latest nightly" -f
+      - git tag Latest-nightly -f
       deploy:
         provider: releases
         api_key: "$GH_TOKEN"
@@ -77,7 +77,7 @@ matrix:
         - ./travis.sh
       before_deploy:
       # Set up git user name and tag this commit
-      - git tag "Latest nightly" -f
+      - git tag Latest-nightly -f
       deploy:
         provider: releases
         api_key: "$GH_TOKEN"
