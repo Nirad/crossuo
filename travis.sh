@@ -33,9 +33,6 @@ if [[ "$TASK" == "clang" ]]; then
 	cd src
 	zip CrossUO-Unbuntu-nightly.zip crossuo.so crossuo
 	mv CrossUO-Unbuntu-nightly.zip ../../
-	cd ../../
-	echo Where is my zip...
-	ls
 	##./src/crossuo --headless
 fi
 
@@ -67,5 +64,8 @@ if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then
 	
 	echo Building Release
 	mkdir release && cd release && cmake -G Ninja .. -DCMAKE_BUILD_TYPE=Release && ninja crossuo_unity -j8
-	cd ..
+	echo Zip File
+	cd src
+	zip CrossUO-OSX-nightly.zip crossuo.so crossuo
+	mv CrossUO-OSX-nightly.zip ../../
 fi;

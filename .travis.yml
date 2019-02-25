@@ -75,4 +75,17 @@ matrix:
       cache: ccache
       script:
         - ./travis.sh
+      before_deploy:
+      # Set up git user name and tag this commit
+      - git tag Lastest -f
+      deploy:
+        provider: releases
+        api_key: "$GH_TOKEN"
+        overwrite: true
+        file: "CrossUO-OSX-nightly.zip"
+        skip_cleanup: true
+        on:
+          tags: false
+          all_branches: true
+          repo: Nirad/crossuo
           
