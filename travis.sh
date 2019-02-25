@@ -31,8 +31,7 @@ if [[ "$TASK" == "clang" ]]; then
 	file ./src/crossuo.so
 	echo Zip File
 	zip  CrossUO-clang-night.zip ./src/crossuo.so ./src/crossuo
-	echo Test LS
-	cd ..
+	echo Where is my zip...
 	ls
 	##./src/crossuo --headless
 fi
