@@ -57,7 +57,7 @@ CGumpMenubar::CGumpMenubar(short x, short y)
                                             { 0x098B, 480, 482, smallWidth, ID_GMB_HELP },
                                             { 0x098D, 543, 546, largeWidth, ID_GMB_WORLD_MAP },
                                             { 0x098B, 651, 654, smallWidth, ID_GMB_INFO },
-                                            { 0x098B, 717, 720, smallWidth, ID_GMB_VISUALUO }};
+                                            { 0x098D, 715, 717, largeWidth, ID_GMB_VISUALUO }};
 
     static const std::wstring text[9] = {
         g_ClilocManager.Cliloc(g_Language)->GetW(3000430, false, "Map"),
@@ -68,10 +68,10 @@ CGumpMenubar::CGumpMenubar(short x, short y)
         g_ClilocManager.Cliloc(g_Language)->GetW(3000134, false, "Help"),
         L"World Map",
         L"< ? >",
-        L"VisualUO"
+        L"Visual UO"
     };
 
-    Add(new CGUIResizepic(0, 0x13BE, 0, 0, 785, 27));
+    Add(new CGUIResizepic(0, 0x13BE, 0, 0, 825, 27));
     Add(new CGUIButton(ID_GMB_MINIMIZE, 0x15A4, 0x15A4, 0x15A4, 5, 3));
     for (int i = 0; i < 9; i++)
     {
@@ -238,7 +238,7 @@ void CGumpMenubar::GUMP_BUTTON_EVENT_C
         }
         case ID_GMB_VISUALUO:
         {
-            //g_Game.OpenGumpExplorer();
+            g_Game.OpenVisualUO();
             break;
         }
         default:
