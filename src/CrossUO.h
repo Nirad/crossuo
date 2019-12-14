@@ -200,6 +200,7 @@ public:
     void OpenMinimap();
     void OpenWorldMap();
     void OpenJournal();
+    void OpenVisualUO();
     void OpenSkills();
     void OpenBackpack();
     void OpenLogOut();

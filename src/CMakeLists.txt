@@ -153,6 +153,7 @@ set(gumps_src
   Gumps/GumpTargetSystem.cpp
   Gumps/GumpTextEntryDialog.cpp
   Gumps/GumpTip.cpp
+  Gumps/GumpVisualUo.cpp
   Gumps/GumpWorldMap.cpp
 )
 
