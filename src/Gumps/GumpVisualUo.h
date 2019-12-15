@@ -35,7 +35,8 @@ public:
     GUMP_COMBOBOX_SELECTION_EVENT_H override;
     GUMP_SLIDER_CLICK_EVENT_H override;
     GUMP_SLIDER_MOVE_EVENT_H override;
-
+    
+    virtual bool OnLeftMouseButtonDoubleClick() override;
     virtual void OnTextInput(const TextEvent &ev) override;
     virtual void OnKeyDown(const KeyEvent &ev) override;
 };

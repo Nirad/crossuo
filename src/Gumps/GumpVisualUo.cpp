@@ -92,7 +92,7 @@ void CGumpVisualUo::UpdateContent()
     Clear();
 
     //Body
-    Add(new CGUIResizepic(0, 0x0A28, 40, 0, 550, 450));
+    Add(new CGUIResizepic(0, 0x0A28, 40, 0, 1024, 768));
 
     //Left page buttons
 
@@ -106,10 +106,12 @@ void CGumpVisualUo::UpdateContent()
         ID_GO_PAGE_2, 0x00E3, 0x00E3, 0x00E3, 0, 111)); // Fixme: no other side for this icon
     button->ToPage = 2;
 
-    Add(new CGUIButton(ID_GO_CANCEL, 0x00F3, 0x00F2, 0x00F1, 154, 405));
+    /*
+     Add(new CGUIButton(ID_GO_CANCEL, 0x00F3, 0x00F2, 0x00F1, 154, 405));
     Add(new CGUIButton(ID_GO_APPLY, 0x00EF, 0x00EE, 0x00F0, 248, 405));
     Add(new CGUIButton(ID_GO_DEFAULT, 0x00F6, 0x00F5, 0x00F4, 346, 405));
     Add(new CGUIButton(ID_GO_OKAY, 0x00F9, 0x00F7, 0x00F8, 443, 405));
+     */
 
     DrawPage1(); //VisualUo config
     DrawPage2(); //VisualUo Explorer
@@ -202,9 +204,10 @@ void CGumpVisualUo::DrawPage2()
 
     //Explorer Win
     CGUIHTMLGump *html =
-        (CGUIHTMLGump *)Add(new CGUIHTMLGump(0, 0x0A3C, 75, 85, 400, 300, true, true));
+        (CGUIHTMLGump *)Add(new CGUIHTMLGump(155, 0x0A3C, 75, 85, 950, 600, false, true));
 
-    // Display Button
+    /*
+     // Display Button
     Add(new CGUIButton(0, 0x098B, 0x098B, 0x098B, 495, 95));
 
     CGUITextEntry *entry = (CGUITextEntry *)Add(
@@ -213,17 +216,17 @@ void CGumpVisualUo::DrawPage2()
     entry->CheckOnSerial = true;
     entry->ReadOnly = true;
     entry->FocusedOffsetY = 2;
+     */
 
-    //TODO : For loop and include in the html gump
-
-    //TEST
-    html->Add(new CGUIGumppic(0x0001, 10, 10));
-
-    //TEST
-    html->Add(new CGUIGumppic(0x0002, 10, 55));
-
-    //TEST
-    html->Add(new CGUIGumppic(0x0003, 10, 55 + 45));
+    int y = 10;
+    for (int i = 0; i < 0X00FF; i++)
+    {
+        //TODO: detect if there is a valid gump
+        CGUIGumppic *ic = new CGUIGumppic(i, 10, y);
+        html->Add(ic);
+        y += ic->GetSize().Height + 5;
+    }
+    html->CalculateDataSize();
 }
 
 void CGumpVisualUo::GUMP_BUTTON_EVENT_C
@@ -353,6 +356,19 @@ void CGumpVisualUo::GUMP_COMBOBOX_SELECTION_EVENT_C
 {
 }
 
+bool CGumpVisualUo::OnLeftMouseButtonDoubleClick()
+{
+    bool result = false;
+    
+    if (g_PressedObject.LeftObject != nullptr && g_PressedObject.LeftObject->IsGUI())
+    {
+        if (((CBaseGUI *)g_PressedObject.LeftObject)->Type == GOT_GUMPPIC)
+        {
+        }
+    }
+    return result;
+}
+
 void CGumpVisualUo::OnTextInput(const TextEvent &ev)
 {
     const auto ch = EvChar(ev);
@@ -370,7 +386,7 @@ void CGumpVisualUo::OnTextInput(const TextEvent &ev)
             }
             else
             {
-                WantRedraw = true;
+                //WantRedraw = true;
             }
         }
     }
