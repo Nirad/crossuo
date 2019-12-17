@@ -218,13 +218,20 @@ void CGumpVisualUo::DrawPage2()
     entry->FocusedOffsetY = 2;
      */
 
-    int y = 10;
+    int y = 20;
     for (int i = 0; i < 0X00FF; i++)
     {
         //TODO: detect if there is a valid gump
         CGUIGumppic *ic = new CGUIGumppic(i, 10, y);
-        html->Add(ic);
-        y += ic->GetSize().Height + 5;
+        if (ic->IsGUI())
+        {
+            char str[10] = { 0 };
+            sprintf_s(str, "0x%04x", i);
+            text = (CGUIText *)html->Add(new CGUIText(0, 10, y - 18));
+            text->CreateTextureA(3, str);
+            html->Add(ic);
+            y += ic->GetSize().Height + 15;
+        }
     }
     html->CalculateDataSize();
 }
