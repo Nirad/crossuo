@@ -6481,7 +6481,12 @@ void CGame::OpenMinimap()
 
 void CGame::OpenWorldMap()
 {
-    //CPluginPacketOpenMap().SendToPlugin();
+    size_t pluginsInfoCount = Crypt::GetPluginsCount();
+    if (pluginsInfoCount > 0u)
+    {
+        CPluginPacketOpenMap().SendToPlugin(); //TODO: query if plugin supports world map
+        return;
+    }
 
     int x = g_ConfigManager.GameWindowX + (g_ConfigManager.GameWindowWidth / 2) - 200;
     int y = g_ConfigManager.GameWindowY + (g_ConfigManager.GameWindowHeight / 2) - 150;
